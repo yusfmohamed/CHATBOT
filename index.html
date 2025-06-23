@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHATBOT</title>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.10/build/spline-viewer.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">CHATBOT</div>
+            <div class="auth-buttons">
+                <button class="sign-in-btn">Sign In</button>
+                <button class="sign-up-btn">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Left Section -->
+            <div class="left-section">
+                <div class="intro-badge">
+                    <span class="badge-text">INTRODUCING AI</span>
+                </div>
+                
+                <h1 class="main-title">CHATBOT FOR<br>DEVELOPERS</h1>
+                
+                <p class="main-description">
+                    The best way to interact with AI instead of traditional interfaces,<br>
+                    deliver intelligent conversations and responses at scale.
+                </p>
+                
+                <div class="action-buttons">
+                    <button class="btn-getstarted" id="getStartedBtn">Get Started ></button>
+                    <button class="btn-documentation" onclick="document.getElementById('aboutSection').scrollIntoView({ behavior: 'smooth' });">About Us ></button>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="right-section">
+                <!-- 3D Spline with Glow Effect -->
+                <div class="spline-container">
+                    <div class="glow-effect"></div>
+                    <spline-viewer url="https://prod.spline.design/aiSzKmeQ7reW3LFN/scene.splinecode"></spline-viewer>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Card (Hidden Initially) -->
+    <div class="login-card-overlay" id="loginCardOverlay">
+        <div class="login-card">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <h2 class="welcome-title">Welcome To ChatBot!</h2>
+            <div class="input-container">
+                <input 
+                    type="text" 
+                    id="usernameInput" 
+                    class="username-input" 
+                    placeholder="Enter your username"
+                    autocomplete="off"
+                >
+            </div>
+            <button class="continue-btn" id="continueBtn" disabled>Continue</button>
+        </div>
+    </div>
+
+    <!-- Interest Selection Card (Hidden Initially) -->
+    <div class="interest-card-overlay" id="interestCardOverlay">
+        <div class="interest-card">
+            <button class="close-btn" id="interestCloseBtn">&times;</button>
+            <h2 class="interest-title">What are you interested in?</h2>
+            <p class="interest-subtitle">Choose your area of focus</p>
+            
+            <div class="interest-grid">
+                <div class="interest-option" data-category="educational">
+                    <div class="interest-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                    </div>
+                    <h3>Educational</h3>
+                    <p>Learning & Academic Support</p>
+                </div>
+
+                <div class="interest-option" data-category="graphic-design">
+                    <div class="interest-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Graphic Design</h3>
+                    <p>Creative Design & Visuals</p>
+                </div>
+
+                <div class="interest-option" data-category="programming">
+                    <div class="interest-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                        </svg>
+                    </div>
+                    <h3>Programming & Code</h3>
+                    <p>Development & Technical Skills</p>
+                </div>
+
+                <div class="interest-option" data-category="business">
+                    <div class="interest-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Business</h3>
+                    <p>Strategy & Entrepreneurship</p>
+                </div>
+
+                <div class="interest-option" data-category="science">
+                    <div class="interest-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
+                        </svg>
+                    </div>
+                    <h3>Science & Research</h3>
+                    <p>Scientific Inquiry & Analysis</p>
+                </div>
+
+                <div class="interest-option" data-category="creative-writing">
+                    <div class="interest-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/>
+                        </svg>
+                    </div>
+                    <h3>Creative Writing</h3>
+                    <p>Storytelling & Content Creation</p>
+                </div>
+            </div>
+            
+            <button class="proceed-btn" id="proceedBtn" disabled>
+                <span>Proceed to Chat</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Initializing ChatBot Interface...</p>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+<section id="aboutSection" class="about-section">
+    <link rel="stylesheet" href="about_us_style.css">
+    
+    <!-- Wrapper added for scaling -->
+    <div class="about-wrapper">
+        <div class="about-container">
+            <div class="about-content">
+                <div class="section-badge">
+                    <span class="badge-text">ABOUT US</span>
+                </div>
+
+                <h2 class="about-title">Innovative AI Solutions</h2>
+
+                <div class="about-text-container">
+                    <p class="about-text">
+                        We are a team of passionate frontend developers dedicated to revolutionizing 
+                        AI interactions. Our mission is to create seamless, intelligent chatbot solutions 
+                        that bridge the gap between complex AI technology and intuitive user experiences.
+                    </p>
+                    <p class="about-text">
+                        From educational platforms to customer support systems, we deliver cutting-edge 
+                        conversational AI that transforms how businesses and individuals interact with technology.
+                    </p>
+                </div>
+
+                <div class="social-section">
+                    <h3 class="social-title">Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-link" data-platform="instagram">
+                            <div class="social-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </div>
+                            <span>Instagram</span>
+                        </a>
+
+                        <a href="#" class="social-link" data-platform="facebook">
+                            <div class="social-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </div>
+                            <span>Facebook</span>
+                        </a>
+
+                        <a href="#" class="social-link" data-platform="github">
+                            <div class="social-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </div>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-section">
+                <h3 class="contact-title">Get In Touch</h3>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="contactName" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="contactEmail" class="form-input" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="contactMessage" class="form-textarea" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit-btn">
+                        <span>Send Message</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div> <!-- End of about-wrapper -->
+</section>
+
+
+    <script>
+        // Page load fade animation
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('fade-in-active');
+                }, index * 200);
+            });
+        });
+
+        // Get elements
+        const getStartedBtn = document.getElementById('getStartedBtn');
+        const loginCardOverlay = document.getElementById('loginCardOverlay');
+        const closeBtn = document.getElementById('closeBtn');
+        const usernameInput = document.getElementById('usernameInput');
+        const continueBtn = document.getElementById('continueBtn');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const interestCardOverlay = document.getElementById('interestCardOverlay');
+        const interestCloseBtn = document.getElementById('interestCloseBtn');
+        const proceedBtn = document.getElementById('proceedBtn');
+
+        // Get Started button handler
+        getStartedBtn.addEventListener('click', function() {
+            loginCardOverlay.style.display = 'flex';
+            setTimeout(() => {
+                loginCardOverlay.classList.add('active');
+            }, 10);
+        });
+
+        // Close button handler
+        closeBtn.addEventListener('click', function() {
+            loginCardOverlay.classList.remove('active');
+            setTimeout(() => {
+                loginCardOverlay.style.display = 'none';
+                usernameInput.value = '';
+                continueBtn.disabled = true;
+                continueBtn.classList.remove('active');
+            }, 300);
+        });
+
+        // Interest card close button handler
+        interestCloseBtn.addEventListener('click', function() {
+            interestCardOverlay.classList.remove('active');
+            setTimeout(() => {
+                interestCardOverlay.style.display = 'none';
+            }, 300);
+        });
+
+        // Close overlay when clicking outside
+        loginCardOverlay.addEventListener('click', function(e) {
+            if (e.target === loginCardOverlay) {
+                closeBtn.click();
+            }
+        });
+
+        interestCardOverlay.addEventListener('click', function(e) {
+            if (e.target === interestCardOverlay) {
+                interestCloseBtn.click();
+            }
+        });
+
+        // Username input handler
+        usernameInput.addEventListener('input', function() {
+            const username = this.value.trim();
+            if (username.length > 0) {
+                continueBtn.disabled = false;
+                continueBtn.classList.add('active');
+            } else {
+                continueBtn.disabled = true;
+                continueBtn.classList.remove('active');
+            }
+        });
+
+        // Continue button handler
+        continueBtn.addEventListener('click', function() {
+            if (!this.disabled) {
+                loginCardOverlay.classList.remove('active');
+                setTimeout(() => {
+                    loginCardOverlay.style.display = 'none';
+                    interestCardOverlay.style.display = 'flex';
+                    setTimeout(() => {
+                        interestCardOverlay.classList.add('active');
+                    }, 10);
+                }, 300);
+            }
+        });
+
+        // Interest selection handling
+        const interestOptions = document.querySelectorAll('.interest-option');
+        let selectedInterest = null;
+
+        interestOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove previous selection
+                interestOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Add selection to clicked option
+                this.classList.add('selected');
+                selectedInterest = this.dataset.category;
+                
+                // Enable proceed button
+                proceedBtn.disabled = false;
+                proceedBtn.classList.add('active');
+            });
+        });
+
+        // Proceed button handler
+        proceedBtn.addEventListener('click', function() {
+            if (!this.disabled && selectedInterest) {
+                interestCardOverlay.classList.remove('active');
+                setTimeout(() => {
+                    interestCardOverlay.style.display = 'none';
+                    loadingOverlay.style.display = 'flex';
+                }, 300);
+
+                // Simulate loading and redirect
+                setTimeout(() => {
+                    const username = usernameInput.value.trim();
+                    window.location.href = `chat.html?username=${encodeURIComponent(username)}&interest=${encodeURIComponent(selectedInterest)}`;
+                }, 2000);
+            }
+        });
+
+        // About Us scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe about section elements
+        const aboutElements = document.querySelectorAll('.about-content, .contact-section');
+        aboutElements.forEach(el => observer.observe(el));
+
+        // Social icons hover effects
+        const socialLinks = document.querySelectorAll('.social-link');
+        socialLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Contact form handler
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.form-submit-btn');
+            const originalText = submitBtn.querySelector('span').textContent;
+            
+            // Add loading state
+            submitBtn.classList.add('loading');
+            submitBtn.querySelector('span').textContent = 'Sending...';
+            
+            // Simulate form submission
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                submitBtn.classList.add('success');
+                submitBtn.querySelector('span').textContent = 'Message Sent!';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.classList.remove('success');
+                    submitBtn.querySelector('span').textContent = originalText;
+                }, 3000);
+            }, 2000);
+        });
+
+        // Hide Spline logo
+        setTimeout(() => {
+            const splineViewer = document.querySelector('spline-viewer');
+            if (splineViewer && splineViewer.shadowRoot) {
+                const style = document.createElement('style');
+                style.textContent = `
+                    .logo { display: none !important; }
+                    .logo-container { display: none !important; }
+                    .watermark { display: none !important; }
+                `;
+                splineViewer.shadowRoot.appendChild(style);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
